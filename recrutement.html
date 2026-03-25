@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recrutement - Portail PDMA</title>
+    
+    <script>
+        if (sessionStorage.getItem('access_granted') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'pdma-cyan': '#33C3C3',
+                'pdma-orange': '#F19A2A',
+                'pdma-light': '#F8FAFC',
+              }
+            }
+          }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-pdma-light text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo PDMA" class="h-12 w-auto mr-4">
+                <div class="hidden lg:block border-l pl-4 border-gray-200">
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none block">Plateforme des Métiers</span>
+                    <span class="text-[10px] font-black text-pdma-cyan uppercase tracking-tighter leading-none block">de l'Autonomie</span>
+                </div>
+            </a>
+            <div class="hidden md:flex space-x-6 text-[11px] font-black uppercase tracking-widest items-center text-slate-600">
+                <a href="index.html" class="hover:text-pdma-cyan transition">Accueil</a>
+                <a href="documents.html" class="hover:text-pdma-cyan transition">Documents</a>
+                <a href="elearning.html" class="hover:text-pdma-cyan transition">E-learning</a>
+                <a href="recrutement.html" class="text-pdma-cyan">Espace Recrutement</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-b from-white to-pdma-light py-12">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tight">Base de données <span class="text-pdma-cyan text-4xl">Recrutement</span></h2>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 flex-grow">
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-gray-100 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div><label class="block text-[9px] font-black text-slate-400 mb-2 uppercase">Poste</label><select id="f-poste" class="w-full text-xs p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none"><option value="">Tous</option><option value="Auxiliaire de vie">Auxiliaire de vie</option><option value="Aide ménager">Aide ménager(ère)</option></select></div>
+                <div class="flex items-end"><button onclick="resetFilters()" class="w-full text-[9px] font-black text-pdma-orange border-2 border-pdma-orange py-3 rounded-xl uppercase">Réinitialiser</button></div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-slate-900 text-white uppercase text-[10px] font-black italic">
+                    <tr><th class="p-6">Réf / Poste</th><th class="p-6">Expérience</th><th class="p-6">Secteur</th><th class="p-6">Mobilité</th><th class="p-6 text-center">Diplôme</th><th class="p-6 text-center">Action</th></tr>
+                </thead>
+                <tbody id="table-body" class="divide-y divide-gray-50 text-xs font-bold text-slate-700"></tbody>
+            </table>
+            <div id="counter" class="bg-slate-50 p-4 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">Chargement...</div>
+        </div>
+    </main>
+
+    <div id="contactModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-[3rem] shadow-2xl p-10 relative">
+            <button onclick="closeModal()" class="absolute top-6 right-8 text-slate-300 hover:text-pdma-orange transition"><i class="fas fa-times text-xl"></i></button>
+            <div class="text-center mb-8">
+                <h3 class="text-xl font-black text-slate-900 uppercase">Recevoir le CV</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Candidat Réf: <span id="displayID" class="text-pdma-orange">---</span></p>
+            </div>
+            <form id="reportingForm" class="space-y-4">
+                <input type="hidden" id="candidatID">
+                <input type="text" id="nom" placeholder="Votre Nom" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
+                <input type="text" id="prenom" placeholder="Votre Prénom" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
+                <input type="text" id="societe" placeholder="Votre Structure / Société" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
+                <input type="email" id="email" placeholder="Votre Email professionnel" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
+                <button type="submit" id="submitBtn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl shadow-lg hover:bg-pdma-cyan transition-all uppercase tracking-widest text-[11px] mt-4">Valider et recevoir le CV</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t border-gray-100 py-12 mt-12 text-center">
+        <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
+        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des Métiers de l'Autonomie</p>
+    </footer>
+
+    <script>
+        const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2pfvmwODHnXVkAXPEVTvqGbF64_b91QxXl1g0zfAScFqftWNgu8xfxB7zfqn-hfAw6KtMvZOcxlj2/pub?output=csv";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyhODVHKJlp92SI8jHaIGkr8wdkCNB_vsWjdQkvUw19NyDkLbzBzKQPOBnDR9kfm30u/exec";
+
+        let candidats = [];
+        const tableBody = document.getElementById('table-body');
+        const counter = document.getElementById('counter');
+
+        async function loadData() {
+            try {
+                const response = await fetch(SHEET_URL);
+                const data = await response.text();
+                const rows = data.split('\n').slice(1);
+                candidats = rows.map(row => {
+                    const cols = row.split(/[;,]/);
+                    return { id: cols[0]?.trim(), poste: cols[1]?.trim(), exp: cols[2]?.trim(), geo: cols[3]?.trim(), dispo: cols[4]?.trim(), mob: cols[5]?.trim(), dip: cols[6]?.trim()?.toLowerCase() };
+                }).filter(c => c.poste);
+                renderTable(candidats);
+            } catch (e) { counter.innerText = "Erreur de chargement."; }
+        }
+
+        function renderTable(data) {
+            tableBody.innerHTML = '';
+            counter.innerText = `${data.length} PROFIL(S) RÉPERTORIÉ(S)`;
+            data.forEach(c => {
+                tableBody.insertAdjacentHTML('beforeend', `
+                    <tr class="hover:bg-pdma-light transition">
+                        <td class="p-6"><span class="text-slate-400 text-[9px] block">RÉF: ${c.id}</span><span class="text-slate-900 font-black uppercase text-[13px]">${c.poste}</span></td>
+                        <td class="p-6 text-slate-500">${c.exp}</td>
+                        <td class="p-6 text-slate-500">${c.geo}</td>
+                        <td class="p-6"><span class="bg-slate-100 px-3 py-1 rounded-full text-[10px] font-black">${c.mob}</span></td>
+                        <td class="p-6 text-center">${c.dip === 'oui' ? '✅' : '❌'}</td>
+                        <td class="p-6 text-center">
+                            <button onclick="openModal('${c.id}')" class="bg-pdma-cyan text-white text-[9px] font-black px-5 py-3 rounded-xl hover:bg-pdma-orange transition uppercase shadow-md">Contacter</button>
+                        </td>
+                    </tr>`);
+            });
+        }
+
+        function openModal(id) {
+            document.getElementById('candidatID').value = id;
+            document.getElementById('displayID').innerText = id;
+            document.getElementById

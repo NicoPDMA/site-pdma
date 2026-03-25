@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>
+    // Vérifie si l'utilisateur est passé par la page login
+    if (sessionStorage.getItem('access_granted') !== 'true') {
+        window.location.href = "login.html";
+    }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-learning - Portail PDMA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'pdma-cyan': '#33C3C3',
+                'pdma-orange': '#F19A2A',
+                'pdma-light': '#F8FAFC',
+              }
+            }
+          }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="bg-pdma-light text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo PDMA" class="h-12 w-auto mr-4">
+                <div class="hidden lg:block border-l pl-4 border-gray-200">
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none block">Plateforme des Métiers</span>
+                    <span class="text-[10px] font-black text-pdma-cyan uppercase tracking-tighter leading-none block">de l'Autonomie</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex space-x-6 text-[11px] font-black uppercase tracking-widest items-center text-slate-600">
+                <a href="index.html" class="hover:text-pdma-cyan transition">Accueil</a>
+                <a href="documents.html" class="hover:text-pdma-cyan transition">Documents</a>
+                <a href="elearning.html" class="text-pdma-cyan">E-learning</a>
+                <a href="recrutement.html" class="bg-pdma-cyan text-white px-5 py-2.5 rounded-full shadow-md hover:bg-pdma-orange transition">Espace Recrutement</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-b from-white to-pdma-light py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tight">E-learning & <span class="text-pdma-orange text-4xl">Mémos</span></h2>
+            <p class="text-slate-500 mt-2 font-medium italic">Formations courtes et rappels de bonnes pratiques pour vos équipes.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 flex-grow max-w-4xl">
+        
+        <div class="space-y-6">
+            
+            <details class="group bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+                <summary class="flex justify-between items-center p-8 cursor-pointer font-black text-slate-800 uppercase tracking-tight group-open:bg-pdma-orange group-open:text-white transition-all">
+                    <span class="flex items-center"><i class="fas fa-shield-alt mr-4 text-xl"></i> Sécurité et Prévention</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180"></i>
+                </summary>
+                <div class="p-10 text-slate-600 leading-loose border-t border-gray-50">
+                    <h5 class="font-black text-slate-900 mb-4 uppercase text-sm tracking-widest">Les points clés :</h5>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-pdma-cyan mt-1 mr-3"></i> <strong>Gestes et postures :</strong> Utiliser la force des jambes et non du dos lors des transferts.</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-pdma-cyan mt-1 mr-3"></i> <strong>Aides techniques :</strong> Vérifier systématiquement l'état des freins du lit ou du fauteuil.</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-pdma-cyan mt-1 mr-3"></i> <strong>Environnement :</strong> Dégager les tapis ou fils électriques pour prévenir les chutes.</li>
+                    </ul>
+                    <a href="#" class="inline-block bg-pdma-light text-pdma-orange font-black text-[10px] px-6 py-3 rounded-full uppercase tracking-widest hover:bg-pdma-orange hover:text-white transition">Voir la vidéo mémo</a>
+                </div>
+            </details>
+
+            <details class="group bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+                <summary class="flex justify-between items-center p-8 cursor-pointer font-black text-slate-800 uppercase tracking-tight group-open:bg-pdma-orange group-open:text-white transition-all">
+                    <span class="flex items-center"><i class="fas fa-heartbeat mr-4 text-xl"></i> Accompagnement de la fin de vie</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180"></i>
+                </summary>
+                <div class="p-10 text-slate-600 leading-loose border-t border-gray-50">
+                    <p class="italic text-slate-400">Ce module est en cours de préparation par les services de la MDEF. Il sera disponible prochainement.</p>
+                </div>
+            </details>
+
+            <details class="group bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+                <summary class="flex justify-between items-center p-8 cursor-pointer font-black text-slate-800 uppercase tracking-tight group-open:bg-pdma-orange group-open:text-white transition-all">
+                    <span class="flex items-center"><i class="fas fa-utensils mr-4 text-xl"></i> Nutrition et Hydratation</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180"></i>
+                </summary>
+                <div class="p-10 text-slate-600 leading-loose border-t border-gray-50">
+                    <p class="mb-4 font-bold">L'importance de la surveillance alimentaire chez la personne âgée.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Repérer les signes de déshydratation.</li>
+                        <li>Adapter les textures en cas de troubles de la déglutition.</li>
+                        <li>Maintenir le plaisir de manger tout en respectant les régimes.</li>
+                    </ul>
+                </div>
+            </details>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-12 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des Métiers de l'Autonomie</p>
+        </div>
+    </footer>
+
+</body>
+</html>
