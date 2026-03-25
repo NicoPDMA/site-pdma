@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recrutement - Portail PDMA</title>
+    
     <script>
         if (sessionStorage.getItem('access_granted') !== 'true') {
             window.location.href = "login.html";
         }
     </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
           theme: {
             extend: {
-              colors: { 'pdma-cyan': '#33C3C3', 'pdma-orange': '#F19A2A', 'pdma-light': '#F8FAFC' }
+              colors: {
+                'pdma-cyan': '#33C3C3',
+                'pdma-orange': '#F19A2A',
+                'pdma-light': '#F8FAFC',
+              }
             }
           }
         }
@@ -46,26 +52,44 @@
     </header>
 
     <main class="container mx-auto px-6 py-8 flex-grow">
-        <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-gray-100 mb-10">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <div class="bg-white p-6 rounded-[2.5rem] shadow-xl border border-gray-100 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div>
-                    <label class="block text-[9px] font-black text-slate-400 mb-2 uppercase">Poste recherché</label>
-                    <select id="f-poste" onchange="filterData()" class="w-full text-xs p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none">
+                    <label class="block text-[9px] font-black text-slate-400 mb-2 uppercase">Poste</label>
+                    <select id="f-poste" onchange="filterData()" class="w-full text-[10px] p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none font-bold">
                         <option value="">Tous les postes</option>
                         <option value="Auxiliaire de vie">Auxiliaire de vie</option>
                         <option value="Aide ménager">Aide ménager(ère)</option>
                     </select>
                 </div>
                 <div>
+                    <label class="block text-[9px] font-black text-slate-400 mb-2 uppercase">Expérience</label>
+                    <select id="f-exp" onchange="filterData()" class="w-full text-[10px] p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none font-bold">
+                        <option value="">Toutes</option>
+                        <option value="Débutant">Débutant</option>
+                        <option value="1 à 3 ans">1 à 3 ans</option>
+                        <option value="3 ans et +">3 ans et +</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block text-[9px] font-black text-slate-400 mb-2 uppercase">Secteur Géo</label>
-                    <input type="text" id="f-geo" onkeyup="filterData()" placeholder="Ex: Melun..." class="w-full text-xs p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none">
+                    <input type="text" id="f-geo" onkeyup="filterData()" placeholder="Ville..." class="w-full text-[10px] p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none font-bold">
+                </div>
+                <div>
+                    <label class="block text-[9px] font-black text-slate-400 mb-2 uppercase">Mobilité</label>
+                    <select id="f-mob" onchange="filterData()" class="w-full text-[10px] p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none font-bold">
+                        <option value="">Toutes</option>
+                        <option value="Véhiculé">Véhiculé(e)</option>
+                        <option value="Non véhiculé">Non véhiculé(e)</option>
+                    </select>
                 </div>
                 <div>
                     <label class="block text-[9px] font-black text-slate-400 mb-2 uppercase">Diplôme</label>
-                    <select id="f-dip" onchange="filterData()" class="w-full text-xs p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none">
+                    <select id="f-dip" onchange="filterData()" class="w-full text-[10px] p-3 border-2 border-slate-50 rounded-xl bg-slate-50 outline-none font-bold">
                         <option value="">Indifférent</option>
-                        <option value="oui">Diplômé(e)</option>
-                        <option value="non">Non diplômé(e)</option>
+                        <option value="oui">Diplômé(e) ✅</option>
+                        <option value="non">Non diplômé(e) ❌</option>
                     </select>
                 </div>
                 <div class="flex items-end">
@@ -75,21 +99,23 @@
         </div>
 
         <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
-            <table class="w-full text-left">
-                <thead class="bg-slate-900 text-white uppercase text-[10px] font-black italic">
-                    <tr>
-                        <th class="p-6">Réf / Poste</th>
-                        <th class="p-6">Expérience</th>
-                        <th class="p-6">Secteur</th>
-                        <th class="p-6">Mobilité</th>
-                        <th class="p-6 text-center">Diplôme</th>
-                        <th class="p-6 text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body" class="divide-y divide-gray-50 text-xs font-bold text-slate-700">
-                    </tbody>
-            </table>
-            <div id="counter" class="bg-slate-50 p-4 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Chargement des profils...</div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-900 text-white uppercase text-[10px] font-black italic">
+                        <tr>
+                            <th class="p-6">Réf / Poste</th>
+                            <th class="p-6">Expérience</th>
+                            <th class="p-6">Secteur</th>
+                            <th class="p-6">Mobilité</th>
+                            <th class="p-6 text-center">Diplôme</th>
+                            <th class="p-6 text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="divide-y divide-gray-50 text-xs font-bold text-slate-700">
+                        </tbody>
+                </table>
+            </div>
+            <div id="counter" class="bg-slate-50 p-4 text-center text-[10px] font-black text-slate-400 uppercase tracking-widest italic border-t border-gray-100">Chargement des profils...</div>
         </div>
     </main>
 
@@ -100,16 +126,21 @@
                 <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight">Recevoir le CV</h3>
                 <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Candidat Réf: <span id="displayID" class="text-pdma-orange">---</span></p>
             </div>
-            <form id="reportingForm" class="space-y-4 text-left">
+            <form id="reportingForm" class="space-y-4">
                 <input type="hidden" id="candidatID">
                 <input type="text" id="nom" placeholder="Votre Nom" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
                 <input type="text" id="prenom" placeholder="Votre Prénom" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
-                <input type="text" id="societe" placeholder="Votre Structure" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
-                <input type="email" id="email" placeholder="Votre Email" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
+                <input type="text" id="societe" placeholder="Votre Structure / Société" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
+                <input type="email" id="email" placeholder="Votre Email professionnel" required class="w-full px-5 py-3 bg-slate-50 border-2 border-transparent rounded-xl focus:border-pdma-cyan outline-none font-bold text-sm">
                 <button type="submit" id="submitBtn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl shadow-lg hover:bg-pdma-cyan transition-all uppercase tracking-widest text-[11px] mt-4">Valider et recevoir le CV</button>
             </form>
         </div>
     </div>
+
+    <footer class="bg-white border-t border-gray-100 py-12 mt-12 text-center">
+        <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
+        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des Métiers de l'Autonomie</p>
+    </footer>
 
     <script>
         const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2pfvmwODHnXVkAXPEVTvqGbF64_b91QxXl1g0zfAScFqftWNgu8xfxB7zfqn-hfAw6KtMvZOcxlj2/pub?output=csv";
@@ -162,12 +193,16 @@
 
         function filterData() {
             const fPoste = document.getElementById('f-poste').value.toLowerCase();
+            const fExp = document.getElementById('f-exp').value.toLowerCase();
             const fGeo = document.getElementById('f-geo').value.toLowerCase();
+            const fMob = document.getElementById('f-mob').value.toLowerCase();
             const fDip = document.getElementById('f-dip').value;
 
             const filtered = candidats.filter(c => {
                 return (fPoste === "" || c.poste.toLowerCase().includes(fPoste)) &&
+                       (fExp === "" || c.exp.toLowerCase().includes(fExp)) &&
                        (fGeo === "" || c.geo.toLowerCase().includes(fGeo)) &&
+                       (fMob === "" || c.mob.toLowerCase().includes(fMob)) &&
                        (fDip === "" || c.dip === fDip);
             });
             renderTable(filtered);
@@ -175,7 +210,9 @@
 
         function resetFilters() {
             document.getElementById('f-poste').value = "";
+            document.getElementById('f-exp').value = "";
             document.getElementById('f-geo').value = "";
+            document.getElementById('f-mob').value = "";
             document.getElementById('f-dip').value = "";
             renderTable(candidats);
         }
@@ -210,14 +247,14 @@
                 mode: 'no-cors',
                 body: JSON.stringify(payload)
             }).then(() => {
-                // Remplacer par l'URL réelle de stockage
+                // Remplacer l'URL ci-dessous par votre stockage réel (Google Drive ou dossier CV)
                 window.open(`https://votre-stockage.com/cv/CV_${payload.idCandidat}.pdf`, '_blank');
-                alert("Demande de contact enregistrée !");
+                alert("Demande enregistrée ! Le CV va s'ouvrir.");
                 closeModal();
                 btn.innerText = "Valider et recevoir le CV";
                 btn.disabled = false;
             }).catch(() => {
-                alert("Erreur réseau.");
+                alert("Erreur de connexion.");
                 btn.disabled = false;
             });
         });
