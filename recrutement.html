@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recrutement - Portail PDMA</title>
+    <title>Candidats - Espace Adhérent PDMA</title>
     <script>
         if (sessionStorage.getItem('access_granted') !== 'true') { window.location.href = "login.html"; }
     </script>
@@ -25,16 +25,16 @@
                 </div>
             </a>
             <div class="hidden md:flex space-x-6 text-[11px] font-black uppercase tracking-widest text-slate-600">
-                <a href="index.html">Accueil</a>
-                <a href="documents.html">Documents</a>
-                <a href="elearning.html">E-learning</a>
-                <a href="recrutement.html" class="text-pdma-cyan">Espace Recrutement</a>
+                <a href="index.html" class="hover:text-pdma-cyan transition">Accueil</a>
+                <a href="documents.html" class="hover:text-pdma-cyan transition">Documents</a>
+                <a href="elearning.html" class="hover:text-pdma-cyan transition">Mémos</a>
+                <a href="recrutement.html" class="text-pdma-cyan">Candidats</a>
             </div>
         </div>
     </nav>
 
     <header class="py-12 text-center bg-white">
-        <h2 class="text-3xl font-black text-slate-900 uppercase">Base de données <span class="text-pdma-cyan text-4xl">Recrutement</span></h2>
+        <h2 class="text-3xl font-black text-slate-900 uppercase italic">Base de données <span class="text-pdma-cyan text-4xl">Candidats</span></h2>
     </header>
 
     <main class="container mx-auto px-6 py-8 flex-grow">
@@ -143,7 +143,7 @@
         function renderTable(data) {
             const tableBody = document.getElementById('table-body');
             tableBody.innerHTML = '';
-            document.getElementById('counter').innerText = `${data.length} PROFIL(S) RÉPERTORIÉ(S)`;
+            document.getElementById('counter').innerText = `${data.length} CANDIDAT(S) RÉPERTORIÉ(S)`;
             data.forEach(c => {
                 tableBody.insertAdjacentHTML('beforeend', `
                     <tr class="hover:bg-pdma-light transition">
@@ -165,10 +165,10 @@
             const fD = document.getElementById('f-dip').value;
             const filtered = candidats.filter(c => {
                 return (fP === "" || c.poste.toLowerCase().includes(fP)) &&
-                       (fE === "" || c.exp.toLowerCase().includes(fE)) &&
-                       (fG === "" || c.geo.toLowerCase().includes(fG)) &&
-                       (fM === "" || c.mob.toLowerCase().includes(fM)) &&
-                       (fD === "" || c.dip === fD);
+                        (fE === "" || c.exp.toLowerCase().includes(fE)) &&
+                        (fG === "" || c.geo.toLowerCase().includes(fG)) &&
+                        (fM === "" || c.mob.toLowerCase().includes(fM)) &&
+                        (fD === "" || c.dip === fD);
             });
             renderTable(filtered);
         }
