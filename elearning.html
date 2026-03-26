@@ -58,33 +58,55 @@
         <div class="space-y-4">
             
             <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
-                <button class="w-full flex items-center justify-between p-8 hover:bg-slate-50 transition group">
+                <button onclick="toggleSection('secu-content')" class="w-full flex items-center justify-between p-8 hover:bg-slate-50 transition group">
                     <div class="flex items-center space-x-6">
                         <i class="fas fa-shield-alt text-slate-900 text-2xl"></i>
                         <span class="text-md font-black text-slate-900 uppercase tracking-widest italic">Sécurité et Prévention</span>
                     </div>
                     <i class="fas fa-chevron-down text-slate-400 group-hover:text-pdma-orange transition"></i>
                 </button>
+                <div id="secu-content" class="hidden p-8 border-t border-gray-50 bg-slate-50/50">
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                        <strong>Rappel de vigilance :</strong> La prévention des risques professionnels et des accidents domestiques est une priorité. Ce mémo rappelle l'importance de l'analyse de l'environnement de travail (encombrement, éclairage, matériel adapté) pour sécuriser l'intervenant et le bénéficiaire.
+                    </p>
+                    <div class="aspect-video rounded-2xl overflow-hidden shadow-md border border-gray-200">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/V21WDbgNDhI" title="Vidéo Prévention" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
-                <button class="w-full flex items-center justify-between p-8 hover:bg-slate-50 transition group">
+                <button class="w-full flex items-center justify-between p-8 hover:bg-slate-50 transition group opacity-60">
                     <div class="flex items-center space-x-6">
                         <i class="fas fa-heartbeat text-slate-900 text-2xl"></i>
                         <span class="text-md font-black text-slate-900 uppercase tracking-widest italic">Accompagnement de la fin de vie</span>
                     </div>
-                    <i class="fas fa-chevron-down text-slate-400 group-hover:text-pdma-orange transition"></i>
+                    <span class="text-[8px] font-black bg-slate-100 text-slate-400 px-3 py-1 rounded-full uppercase">Bientôt</span>
                 </button>
             </div>
 
             <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
-                <button class="w-full flex items-center justify-between p-8 hover:bg-slate-50 transition group">
+                <button onclick="toggleSection('nutrition-content')" class="w-full flex items-center justify-between p-8 hover:bg-slate-50 transition group">
                     <div class="flex items-center space-x-6">
                         <i class="fas fa-utensils text-slate-900 text-2xl"></i>
                         <span class="text-md font-black text-slate-900 uppercase tracking-widest italic">Nutrition et Hydratation</span>
                     </div>
                     <i class="fas fa-chevron-down text-slate-400 group-hover:text-pdma-orange transition"></i>
                 </button>
+                <div id="nutrition-content" class="hidden p-8 border-t border-gray-50 bg-slate-50/50">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex-1">
+                            <h5 class="font-black text-xs uppercase text-pdma-orange mb-2">Mémo Diététique & Suivi</h5>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                L'alimentation est le premier levier de santé chez la personne fragile. Ce mémo informatif récapitule les besoins nutritionnels spécifiques et les signes d'alerte de dénutrition ou déshydratation à surveiller lors de vos passages.
+                            </p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="Docs/dietetique.pdf" target="_blank" class="bg-white text-slate-400 font-black text-[9px] px-6 py-4 rounded-xl border border-gray-200 hover:bg-slate-50 transition uppercase tracking-widest">Voir</a>
+                            <a href="Docs/dietetique.pdf" download="Mémo_Dietetique_PDMA.pdf" class="bg-pdma-cyan text-white font-black text-[9px] px-6 py-4 rounded-xl hover:bg-pdma-orange transition uppercase tracking-widest shadow-sm">Télécharger</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -96,6 +118,17 @@
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des Métiers de l'Autonomie | Espace Adhérent</p>
         </div>
     </footer>
+
+    <script>
+        function toggleSection(id) {
+            const content = document.getElementById(id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        }
+    </script>
 
 </body>
 </html>
