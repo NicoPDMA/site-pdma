@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documents - Espace Adhérent PDMA</title>
     <script>
+        // Vérification de session : login.html est maintenant au même niveau
         if (sessionStorage.getItem('access_granted') !== 'true') {
-            window.location.href = "../login.html";
+            window.location.href = "login.html";
         }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,7 +32,7 @@
     <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="../1.PDMA%20by%20MDEF%20Logo%20blanc%20à%20utiliser.jpg" alt="Logo PDMA" class="h-12 w-auto mr-4">
+                <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo PDMA" class="h-12 w-auto mr-4">
                 <div class="hidden lg:block border-l pl-4 border-gray-200">
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none block">Plateforme des Métiers</span>
                     <span class="text-[10px] font-black text-pdma-cyan uppercase tracking-tighter leading-none block">de l'Autonomie</span>
@@ -39,10 +40,10 @@
             </div>
             
             <div class="hidden md:flex space-x-6 text-[11px] font-black uppercase tracking-widest items-center text-slate-600">
-                <a href="../index.html" class="hover:text-pdma-cyan transition">Accueil</a>
+                <a href="index.html" class="hover:text-pdma-cyan transition">Accueil</a>
                 <a href="documents.html" class="text-pdma-cyan">Documents</a>
-                <a href="../elearning.html" class="hover:text-pdma-cyan transition">Mémos</a>
-                <a href="../recrutement.html" class="bg-pdma-cyan text-white px-5 py-2.5 rounded-full shadow-md hover:bg-pdma-orange transition">Candidats</a>
+                <a href="elearning.html" class="hover:text-pdma-cyan transition">Mémos</a>
+                <a href="recrutement.html" class="bg-pdma-cyan text-white px-5 py-2.5 rounded-full shadow-md hover:bg-pdma-orange transition">Candidats</a>
             </div>
         </div>
     </nav>
@@ -67,8 +68,8 @@
                     <p class="text-[11px] text-slate-500 leading-tight mb-6">Modèle d'Auxiliaire de vie à domicile mis à jour selon la convention.</p>
                 </div>
                 <div class="flex space-x-2">
-                    <a href="#" target="_blank" class="flex-1 text-center bg-slate-50 text-slate-400 font-black text-[8px] py-3 rounded-xl hover:bg-slate-100 transition uppercase tracking-widest">Afficher</a>
-                    <a href="#" download class="flex-1 text-center bg-pdma-cyan text-white font-black text-[8px] py-3 rounded-xl hover:bg-pdma-orange transition uppercase tracking-widest shadow-sm">Télécharger</a>
+                    <a href="Documents/exemple.pdf" target="_blank" class="flex-1 text-center bg-slate-50 text-slate-400 font-black text-[8px] py-3 rounded-xl hover:bg-slate-100 transition uppercase tracking-widest">Afficher</a>
+                    <a href="Documents/exemple.pdf" download class="flex-1 text-center bg-pdma-cyan text-white font-black text-[8px] py-3 rounded-xl hover:bg-pdma-orange transition uppercase tracking-widest shadow-sm">Télécharger</a>
                 </div>
             </div>
 
@@ -97,8 +98,7 @@
                     <p class="text-[11px] text-slate-500 leading-tight mb-6">Détail des missions et compétences pour Aide à domicile.</p>
                 </div>
                 <div class="flex space-x-2">
-                    <a href="#" target="_blank" class="flex-1 text-center bg-slate-50 text-slate-400 font-black text-[8px] py-3 rounded-xl hover:bg-slate-100 transition uppercase tracking-widest">Afficher</a>
-                    <a href="#" download class="flex-1 text-center bg-pdma-cyan text-white font-black text-[8px] py-3 rounded-xl hover:bg-pdma-orange transition uppercase tracking-widest shadow-sm">Télécharger</a>
+                    <a href="#" class="flex-1 text-center bg-slate-50 text-slate-400 font-black text-[8px] py-3 rounded-xl cursor-not-allowed uppercase tracking-widest">Bientôt</a>
                 </div>
             </div>
 
@@ -112,8 +112,7 @@
                     <p class="text-[11px] text-slate-500 leading-tight mb-6">Outil pour vos entretiens annuels et suivi des compétences.</p>
                 </div>
                 <div class="flex space-x-2">
-                    <a href="#" target="_blank" class="flex-1 text-center bg-slate-50 text-slate-400 font-black text-[8px] py-3 rounded-xl hover:bg-slate-100 transition uppercase tracking-widest">Afficher</a>
-                    <a href="#" download class="flex-1 text-center bg-pdma-cyan text-white font-black text-[8px] py-3 rounded-xl hover:bg-pdma-orange transition uppercase tracking-widest shadow-sm">Télécharger</a>
+                    <a href="#" class="flex-1 text-center bg-slate-50 text-slate-400 font-black text-[8px] py-3 rounded-xl cursor-not-allowed uppercase tracking-widest">Bientôt</a>
                 </div>
             </div>
 
@@ -121,8 +120,8 @@
     </main>
 
     <footer class="bg-white border-t border-gray-100 py-12 mt-auto">
-        <div class="container mx-auto px-6 text-center">
-            <img src="../1.PDMA%20by%20MDEF%20Logo%20blanc%20à%20utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
+        <div class="container mx-auto text-center">
+            <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des Métiers de l'Autonomie</p>
         </div>
     </footer>

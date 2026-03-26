@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espace Adhérent - Portail PDMA</title>
     <script>
+        // CORRECTION : On a supprimé le "../" car login.html est maintenant au même niveau
         if (sessionStorage.getItem('access_granted') !== 'true') {
             window.location.href = "login.html";
         }
