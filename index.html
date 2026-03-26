@@ -12,7 +12,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            theme: { extend: { colors: { 'pdma-cyan': '#33C3C3', 'pdma-orange': '#F19A2A', 'pdma-light': '#F8FAFC' } } }
+            theme: {
+                extend: {
+                    colors: {
+                        'pdma-cyan': '#33C3C3',
+                        'pdma-orange': '#F19A2A',
+                        'pdma-light': '#F8FAFC',
+                    }
+                }
+            }
         }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -29,15 +37,22 @@
                 </div>
             </a>
             <div class="flex items-center space-x-6">
-                <button onclick="sessionStorage.removeItem('access_granted'); window.location.href='login.html';" class="text-xs font-black text-pdma-orange uppercase tracking-widest hover:text-red-500 transition">Déconnexion</button>
+                <span class="text-xs font-bold text-slate-500 italic uppercase">Espace Professionnel</span>
+                <button onclick="sessionStorage.removeItem('access_granted'); window.location.href='login.html';" class="text-xs font-black text-pdma-orange uppercase tracking-widest hover:text-red-500 transition">
+                    Déconnexion
+                </button>
             </div>
         </div>
     </nav>
 
     <header class="py-20 text-center bg-white px-6">
-        <div class="container mx-auto font-medium text-slate-500 italic">
-            <h1 class="text-5xl font-black text-slate-900 uppercase leading-tight not-italic">Bienvenue sur votre <span class="text-pdma-cyan">Espace Pro</span></h1>
-            <p class="text-lg max-w-2xl mx-auto mt-6">Retrouvez tous les outils mutualisés de la Plateforme des Métiers de l'Autonomie.</p>
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-black text-slate-900 uppercase leading-tight italic">
+                Bienvenue sur votre <span class="text-pdma-cyan">Espace Pro</span>
+            </h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto mt-6 font-medium">
+                Retrouvez tous les outils mutualisés de la Plateforme des Métiers de l'Autonomie pour accompagner votre structure au quotidien.
+            </p>
         </div>
     </header>
 
@@ -46,31 +61,53 @@
             
             <a href="recrutement.html" class="block bg-white p-10 rounded-[2.5rem] shadow-xl hover:shadow-pdma-cyan/20 hover:scale-105 transition-all duration-300 group border border-gray-100 flex flex-col items-center text-center">
                 <div class="bg-slate-500 text-white w-20 h-20 rounded-3xl flex items-center justify-center mb-8 shadow-inner">
-                    <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <svg class="w-14 h-14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.5 15.5L20 20M11 17C14.3137 17 17 14.3137 17 11C17 7.68629 14.3137 5 11 5C7.68629 5 5 7.68629 5 11C5 14.3137 7.68629 17 11 17Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 uppercase">Base recrutement</h3>
-                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow">Consultez les profils des candidats disponibles sur le territoire.</p>
-                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-cyan group-hover:text-white transition shadow-sm">Accéder</div>
+                <h3 class="text-2xl font-black text-slate-900 uppercase italic tracking-tight">Base recrutement</h3>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow font-medium">
+                    Consultez les profils des candidats disponibles sur le territoire et contactez-les directement.
+                </p>
+                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-slate-500 group-hover:text-white transition shadow-sm">
+                    Accéder à la base
+                </div>
             </a>
 
             <a href="documents.html" class="block bg-white p-10 rounded-[2.5rem] shadow-xl hover:shadow-pdma-cyan/20 hover:scale-105 transition-all duration-300 group border border-gray-100 flex flex-col items-center text-center">
-                <div class="bg-pdma-cyan text-white w-20 h-20 rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-inner"><i class="fas fa-file-contract"></i></div>
-                <h3 class="text-2xl font-black text-slate-900 uppercase">Documents Type</h3>
-                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow">Téléchargez vos modèles de contrats et fiches de poste.</p>
-                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-cyan group-hover:text-white transition shadow-sm">Voir</div>
+                <div class="bg-pdma-cyan text-white w-20 h-20 rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-inner">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900 uppercase italic tracking-tight">Documents Type</h3>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow font-medium">
+                    Téléchargez vos modèles de contrats, fiches de poste et livrets d'accueil mutualisés.
+                </p>
+                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-cyan group-hover:text-white transition shadow-sm">
+                    Voir les documents
+                </div>
             </a>
 
             <a href="elearning.html" class="block bg-white p-10 rounded-[2.5rem] shadow-xl hover:shadow-pdma-orange/20 hover:scale-105 transition-all duration-300 group border border-gray-100 flex flex-col items-center text-center">
-                <div class="bg-pdma-orange text-white w-20 h-20 rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-inner"><i class="fas fa-graduation-cap"></i></div>
-                <h3 class="text-2xl font-black text-slate-900 uppercase">E-learning & Mémos</h3>
-                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow">Modules de formation flash et bonnes pratiques.</p>
-                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-orange group-hover:text-white transition shadow-sm">Se former</div>
+                <div class="bg-pdma-orange text-white w-20 h-20 rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-inner">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900 uppercase italic tracking-tight">E-learning & Mémos</h3>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow font-medium">
+                    Accédez aux modules de formation flash et aux mémos de bonnes pratiques pour vos salariés.
+                </p>
+                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-orange group-hover:text-white transition shadow-sm">
+                    Se former
+                </div>
             </a>
 
         </div>
     </main>
+
+    <footer class="py-8 bg-white border-t border-gray-100 mt-20 px-6">
+        <div class="container mx-auto text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            © 2026 Portail PDMA | MDEF Grand Paris Sud | Tous droits réservés.
+        </div>
+    </footer>
+
 </body>
 </html>
