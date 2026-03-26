@@ -1,101 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>
-    // Vérifie si l'utilisateur est passé par la page login
-    if (sessionStorage.getItem('access_granted') !== 'true') {
-        window.location.href = "login.html";
-    }
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Portail PDMA</title>
+    <title>Espace Pro - Portail PDMA</title>
+    <script>
+        // Si la session n'est pas validée, on renvoie vers le login
+        if (sessionStorage.getItem('access_granted') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                'pdma-cyan': '#33C3C3',
-                'pdma-orange': '#F19A2A',
-                'pdma-light': '#F8FAFC',
-              }
+            theme: {
+                extend: {
+                    colors: {
+                        'pdma-cyan': '#33C3C3',
+                        'pdma-orange': '#F19A2A',
+                        'pdma-light': '#F8FAFC',
+                    }
+                }
             }
-          }
         }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-pdma-light text-slate-800 font-sans min-h-screen flex flex-col">
+<body class="bg-pdma-light text-slate-800 font-sans min-h-screen">
 
     <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center">
+            <a href="index.html" class="flex items-center">
                 <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo PDMA" class="h-12 w-auto mr-4">
-                <div class="hidden lg:block border-l pl-4 border-gray-200">
-                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none block">Plateforme des Métiers</span>
-                    <span class="text-[10px] font-black text-pdma-cyan uppercase tracking-tighter leading-none block">de l'Autonomie</span>
+                <div class="hidden lg:block border-l pl-4 border-gray-200 uppercase font-black text-[10px]">
+                    <span class="text-slate-400 block">Plateforme des Métiers</span>
+                    <span class="text-pdma-cyan block">de l'Autonomie</span>
                 </div>
-            </div>
-            
-            <div class="hidden md:flex space-x-6 text-[11px] font-black uppercase tracking-widest items-center text-slate-600">
-                <a href="../index.html" class="text-pdma-cyan">Accueil</a>
-                <a href="documents.html" class="hover:text-pdma-cyan transition">Documents</a>
-                <a href="elearning.html" class="hover:text-pdma-cyan transition">E-learning</a>
-                <a href="recrutement.html" class="bg-pdma-cyan text-white px-5 py-2.5 rounded-full shadow-md hover:bg-pdma-orange transition">Espace Recrutement</a>
+            </a>
+            <div class="flex items-center space-x-6">
+                <span class="text-xs font-bold text-slate-500">Bonjour, Recruteur PDMA</span>
+                <button onclick="sessionStorage.removeItem('access_granted'); window.location.href='login.html';" class="text-xs font-black text-pdma-orange uppercase tracking-widest hover:text-red-500 transition">
+                    Déconnexion
+                </button>
             </div>
         </div>
     </nav>
 
-    <header class="bg-gradient-to-b from-white to-pdma-light py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight uppercase">
+    <header class="py-20 text-center bg-white px-6">
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-black text-slate-900 uppercase leading-tight">
                 Bienvenue sur votre <span class="text-pdma-cyan">Espace Pro</span>
-            </h2>
-            <p class="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
+            </h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto mt-6 font-medium">
                 Retrouvez tous les outils mutualisés de la Plateforme des Métiers de l'Autonomie pour accompagner votre structure au quotidien.
             </p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 flex-grow">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <main class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             
-            <a href="recrutement.html" class="group bg-white p-10 rounded-[3rem] shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center">
-                <div class="bg-slate-900 w-20 h-20 rounded-[1.5rem] flex items-center justify-center text-white mb-8 group-hover:bg-pdma-cyan transition-colors shadow-lg">
-                    <i class="fas fa-user-search text-3xl"></i>
+            <a href="recrutement.html" class="block bg-white p-10 rounded-[2.5rem] shadow-xl hover:shadow-pdma-cyan/20 hover:scale-105 transition-all duration-300 group border border-gray-100 flex flex-col items-center text-center">
+                <div class="bg-slate-500 text-white w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-8 shadow-inner">
+                    <i class="fas fa-search-dollar"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">Base Recrutement</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-8 flex-grow">Consultez les profils des candidats disponibles sur le territoire et contactez-les directement.</p>
-                <span class="text-[10px] font-black uppercase text-pdma-cyan tracking-[0.2em] border-2 border-pdma-cyan px-6 py-2 rounded-full group-hover:bg-pdma-cyan group-hover:text-white transition-all">Accéder à la base</span>
+                <h3 class="text-2xl font-black text-slate-900 uppercase">Base recrutement</h3>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow">
+                    Consultez les profils des candidats disponibles sur le territoire et contactez-les directement.
+                </p>
+                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-cyan group-hover:text-white transition shadow-sm">
+                    Accéder à la base
+                </div>
             </a>
 
-            <a href="documents.html" class="group bg-white p-10 rounded-[3rem] shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center">
-                <div class="bg-pdma-cyan w-20 h-20 rounded-[1.5rem] flex items-center justify-center text-white mb-8 group-hover:bg-pdma-orange transition-colors shadow-lg">
-                    <i class="fas fa-file-invoice text-3xl"></i>
+            <a href="documents.html" class="block bg-white p-10 rounded-[2.5rem] shadow-xl hover:shadow-pdma-cyan/20 hover:scale-105 transition-all duration-300 group border border-gray-100 flex flex-col items-center text-center">
+                <div class="bg-pdma-cyan text-white w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-8 shadow-inner">
+                    <i class="fas fa-file-contract"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">Documents Type</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-8 flex-grow">Téléchargez vos modèles de contrats, fiches de poste et livrets d'accueil mutualisés.</p>
-                <span class="text-[10px] font-black uppercase text-pdma-cyan tracking-[0.2em] border-2 border-pdma-cyan px-6 py-2 rounded-full group-hover:bg-pdma-cyan group-hover:text-white transition-all">Voir les documents</span>
+                <h3 class="text-2xl font-black text-slate-900 uppercase">Documents Type</h3>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow">
+                    Téléchargez vos modèles de contrats, fiches de poste et livrets d'accueil mutualisés.
+                </p>
+                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-cyan group-hover:text-white transition shadow-sm">
+                    Voir les documents
+                </div>
             </a>
 
-            <a href="elearning.html" class="group bg-white p-10 rounded-[3rem] shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center">
-                <div class="bg-pdma-orange w-20 h-20 rounded-[1.5rem] flex items-center justify-center text-white mb-8 group-hover:bg-slate-900 transition-colors shadow-lg shadow-pdma-orange/20">
-                    <i class="fas fa-graduation-cap text-3xl"></i>
+            <a href="elearning.html" class="block bg-white p-10 rounded-[2.5rem] shadow-xl hover:shadow-pdma-orange/20 hover:scale-105 transition-all duration-300 group border border-gray-100 flex flex-col items-center text-center">
+                <div class="bg-pdma-orange text-white w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-8 shadow-inner">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">E-learning & Mémos</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-8 flex-grow">Accédez aux modules de formation flash et aux mémos de bonnes pratiques pour vos salariés.</p>
-                <span class="text-[10px] font-black uppercase text-pdma-cyan tracking-[0.2em] border-2 border-pdma-cyan px-6 py-2 rounded-full group-hover:bg-pdma-cyan group-hover:text-white transition-all">Se former</span>
+                <h3 class="text-2xl font-black text-slate-900 uppercase">E-learning & Mémos</h3>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed flex-grow">
+                    Accédez aux modules de formation flash et aux mémos de bonnes pratiques pour vos salariés.
+                </p>
+                <div class="mt-10 bg-slate-100 text-slate-900 text-[11px] font-black px-8 py-3 rounded-full uppercase tracking-widest group-hover:bg-pdma-orange group-hover:text-white transition shadow-sm">
+                    Se former
+                </div>
             </a>
 
         </div>
     </main>
 
-    <footer class="bg-white border-t border-gray-100 py-12 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des Métiers de l'Autonomie</p>
-            <p class="text-[9px] text-slate-300 mt-2 font-medium">Un portail développé par la Maison de l'Emploi et de la Formation Grand Paris Sud.</p>
+    <footer class="py-8 bg-white border-t border-gray-100 mt-20 px-6">
+        <div class="container mx-auto text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            © 2024 Portail PDMA | MDEF Grand Paris Sud | Tous droits réservés.
         </div>
     </footer>
 
