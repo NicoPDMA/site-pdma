@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>
-    // V�rifie si l'utilisateur est pass� par la page login
-    if (sessionStorage.getItem('access_granted') !== 'true') {
-        window.location.href = "login.html";
-    }
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documents - Portail PDMA</title>
+    <title>Documents - Espace Adh&eacute;rent PDMA</title>
+    <script>
+        if (sessionStorage.getItem('access_granted') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,9 +30,9 @@
     <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo PDMA" class="h-12 w-auto mr-4">
+                <img src="1.PDMA%20by%20MDEF%20Logo%20blanc%20�%20utiliser.jpg" alt="Logo PDMA" class="h-12 w-auto mr-4">
                 <div class="hidden lg:block border-l pl-4 border-gray-200">
-                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none block">Plateforme des Métiers</span>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter leading-none block">Plateforme des M&eacute;tiers</span>
                     <span class="text-[10px] font-black text-pdma-cyan uppercase tracking-tighter leading-none block">de l'Autonomie</span>
                 </div>
             </div>
@@ -41,61 +40,68 @@
             <div class="hidden md:flex space-x-6 text-[11px] font-black uppercase tracking-widest items-center text-slate-600">
                 <a href="index.html" class="hover:text-pdma-cyan transition">Accueil</a>
                 <a href="documents.html" class="text-pdma-cyan">Documents</a>
-                <a href="elearning.html" class="hover:text-pdma-cyan transition">E-learning</a>
-                <a href="recrutement.html" class="bg-pdma-cyan text-white px-5 py-2.5 rounded-full shadow-md hover:bg-pdma-orange transition">Espace Recrutement</a>
+                <a href="elearning.html" class="hover:text-pdma-cyan transition">M&eacute;mos</a>
+                <a href="recrutement.html" class="bg-pdma-cyan text-white px-5 py-2.5 rounded-full shadow-md hover:bg-pdma-orange transition">Candidats</a>
             </div>
         </div>
     </nav>
 
     <header class="bg-gradient-to-b from-white to-pdma-light py-12">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tight">Modèles & <span class="text-pdma-cyan text-4xl">Documents Type</span></h2>
-            <p class="text-slate-500 mt-2 font-medium italic">Téléchargez vos outils administratifs mutualisés en un clic.</p>
+            <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tight">Vos <span class="text-pdma-cyan text-4xl">Documents</span></h2>
+            <p class="text-slate-500 mt-2 font-medium italic">Retrouvez diff&eacute;rents mod&egrave;les de documents n&eacute;cessaires &agrave; votre activit&eacute;.</p>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-12 flex-grow">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 hover:shadow-xl transition duration-300 group">
-                <div class="flex items-center justify-between mb-6">
-                    <i class="far fa-file-word text-blue-500 text-4xl"></i>
-                    <span class="text-[8px] font-black bg-blue-50 text-blue-500 px-3 py-1 rounded-full uppercase">Word</span>
+            <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <i class="far fa-file-word text-blue-500 text-3xl"></i>
+                        <span class="text-[7px] font-black bg-blue-50 text-blue-500 px-2 py-1 rounded-full uppercase">Word</span>
+                    </div>
+                    <h4 class="text-md font-black text-slate-800 uppercase tracking-tight mb-2">Contrat de Travail CDI</h4>
+                    <p class="text-[11px] text-slate-500 leading-tight mb-6">Mod&egrave;le d'Auxiliaire de vie &agrave; domicile mis &agrave; jour selon la convention.</p>
                 </div>
-                <h4 class="text-lg font-black text-slate-800 uppercase tracking-tight mb-2">Contrat de Travail CDI</h4>
-                <p class="text-xs text-slate-500 leading-relaxed mb-8">Modèle d'Auxiliaire de vie à domicile mis à jour selon la dernière convention collective.</p>
-                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[10px] py-4 rounded-2xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-[0.2em]">Télécharger</a>
+                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[9px] py-3 rounded-xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-widest">T&eacute;l&eacute;charger</a>
             </div>
 
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 hover:shadow-xl transition duration-300 group">
-                <div class="flex items-center justify-between mb-6">
-                    <i class="far fa-file-pdf text-red-500 text-4xl"></i>
-                    <span class="text-[8px] font-black bg-red-50 text-red-500 px-3 py-1 rounded-full uppercase">PDF</span>
+            <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <i class="far fa-file-pdf text-red-500 text-3xl"></i>
+                        <span class="text-[7px] font-black bg-red-50 text-red-500 px-2 py-1 rounded-full uppercase">PDF</span>
+                    </div>
+                    <h4 class="text-md font-black text-slate-800 uppercase tracking-tight mb-2">Livret d'Accueil</h4>
+                    <p class="text-[11px] text-slate-500 leading-tight mb-6">Document obligatoire &agrave; remettre lors de l'int&eacute;gration.</p>
                 </div>
-                <h4 class="text-lg font-black text-slate-800 uppercase tracking-tight mb-2">Livret d'Accueil</h4>
-                <p class="text-xs text-slate-500 leading-relaxed mb-8">Document obligatoire à remettre lors de l'intégration d'un nouveau collaborateur.</p>
-                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[10px] py-4 rounded-2xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-[0.2em]">Télécharger</a>
+                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[9px] py-3 rounded-xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-widest">T&eacute;l&eacute;charger</a>
             </div>
 
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 hover:shadow-xl transition duration-300 group">
-                <div class="flex items-center justify-between mb-6">
-                    <i class="far fa-file-word text-blue-500 text-4xl"></i>
-                    <span class="text-[8px] font-black bg-blue-50 text-blue-500 px-3 py-1 rounded-full uppercase">Word</span>
+            <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <i class="far fa-file-word text-blue-500 text-3xl"></i>
+                        <span class="text-[7px] font-black bg-blue-50 text-blue-500 px-2 py-1 rounded-full uppercase">Word</span>
+                    </div>
+                    <h4 class="text-md font-black text-slate-800 uppercase tracking-tight mb-2">Fiche de Poste AD</h4>
+                    <p class="text-[11px] text-slate-500 leading-tight mb-6">D&eacute;tail des missions et comp&eacute;tences pour Aide &agrave; domicile.</p>
                 </div>
-                <h4 class="text-lg font-black text-slate-800 uppercase tracking-tight mb-2">Fiche de Poste AD</h4>
-                <p class="text-xs text-slate-500 leading-relaxed mb-8">Détail des missions et compétences pour le métier d'Aide à domicile.</p>
-                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[10px] py-4 rounded-2xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-[0.2em]">Télécharger</a>
+                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[9px] py-3 rounded-xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-widest">T&eacute;l&eacute;charger</a>
             </div>
 
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 hover:shadow-xl transition duration-300 group">
-                <div class="flex items-center justify-between mb-6">
-                    <i class="far fa-file-excel text-emerald-500 text-4xl"></i>
-                    <span class="text-[8px] font-black bg-emerald-50 text-emerald-500 px-3 py-1 rounded-full uppercase">Excel</span>
+            <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <i class="far fa-file-excel text-emerald-500 text-3xl"></i>
+                        <span class="text-[7px] font-black bg-emerald-50 text-emerald-500 px-2 py-1 rounded-full uppercase">Excel</span>
+                    </div>
+                    <h4 class="text-md font-black text-slate-800 uppercase tracking-tight mb-2">Grille d'EVALUATION</h4>
+                    <p class="text-[11px] text-slate-500 leading-tight mb-6">Outil pour vos entretiens annuels et suivi des comp&eacute;tences.</p>
                 </div>
-                <h4 class="text-lg font-black text-slate-800 uppercase tracking-tight mb-2">Grille d'Évaluation</h4>
-                <p class="text-xs text-slate-500 leading-relaxed mb-8">Outil pratique pour vos entretiens annuels et le suivi des compétences.</p>
-                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[10px] py-4 rounded-2xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-[0.2em]">Télécharger</a>
+                <a href="#" target="_blank" class="block text-center bg-slate-50 text-pdma-cyan font-black text-[9px] py-3 rounded-xl hover:bg-pdma-cyan hover:text-white transition uppercase tracking-widest">T&eacute;l&eacute;charger</a>
             </div>
 
         </div>
@@ -103,8 +109,8 @@
 
     <footer class="bg-white border-t border-gray-100 py-12">
         <div class="container mx-auto px-6 text-center">
-            <img src="1.PDMA by MDEF Logo blanc à utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des Métiers de l'Autonomie</p>
+            <img src="1.PDMA%20by%20MDEF%20Logo%20blanc%20�%20utiliser.jpg" alt="Logo" class="h-10 mx-auto mb-6 opacity-30 grayscale">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; 2026 Plateforme des M&eacute;tiers de l'Autonomie</p>
         </div>
     </footer>
 
